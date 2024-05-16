@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { refreshUser } from "../redux/auth/operations";
+import Balance from "../components/Balance/Balance";
+import { Box } from "@chakra-ui/react";
+
+
 
 const Home = () => {
+
+  
   return (
     <>
-      <div>Home</div>
+      <Box marginBlock={'32px'}>
+      <Balance/>
       <Link to={"/reports"}>Reports</Link>
+      </Box>
+      
     </>
   );
 };
