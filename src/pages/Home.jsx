@@ -32,7 +32,8 @@ const Home = () => {
     <>
       <Box marginBlock={"32px"}>
         <Flex flexDirection={flexDirection}>
-          <Flex>TO TRANSACTIONS</Flex>
+          {isMobile && <Flex>TO TRANSACTIONS</Flex>}
+
           <Reports />
           <Balance />
           {isMobile && (
@@ -48,6 +49,7 @@ const Home = () => {
             </Flex>
           )}
         </Flex>
+
         {isMobile && <MobileNavigation />}
       </Box>
     </>

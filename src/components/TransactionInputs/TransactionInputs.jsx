@@ -22,7 +22,7 @@ const TransactionInputs = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        axios.defaults.headers.common.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NDQ3NTNmYzMzNjBlZTZlNjQwZGZlOSIsImVtYWlsIjoid2llbGljemtva2FtaWwyQGdtYWlsLmNvbSIsImlhdCI6MTcxNTg0NjgxMywiZXhwIjoxNzE1OTMzMjEzfQ.O5R2STeOSNvc1nsrl9HPLUy1FpVTouckL9ahkBsXD0I`;
+        axios.defaults.headers.common.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NDQ3NTNmYzMzNjBlZTZlNjQwZGZlOSIsImVtYWlsIjoid2llbGljemtva2FtaWwyQGdtYWlsLmNvbSIsImlhdCI6MTcxNTkyODI5OCwiZXhwIjoxNzE2MDE0Njk4fQ.SRxc6QUxa-HuArLtOIHt8uM9iu_6SrUIvAVXmzPkqSQ`;
         const res = await axios.get(
           "https://cashify-backend.onrender.com/transaction/expense-categories"
         );
