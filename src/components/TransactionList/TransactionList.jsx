@@ -45,22 +45,27 @@ const TransactionList = ({ transactionType }) => {
       width={{ base: "100%", md: "full", lg: "4/5" }}
       fontSize="xs"
     >
-      <Table variant="simple" bg="gray.100" borderRadius="md">
+      <Table
+        overflow={"hidden"}
+        variant="simple"
+        bg="gray.100"
+        borderRadius="md"
+      >
         <Thead>
           <Tr>
-            <Th px={2} py={3} textTransform="uppercase">
+            <Th textAlign={"center"} px={2} py={3} textTransform="uppercase">
               Date
             </Th>
-            <Th px={2} py={3} textTransform="uppercase">
+            <Th textAlign={"center"} px={2} py={3} textTransform="uppercase">
               Description
             </Th>
-            <Th px={2} py={3} textTransform="uppercase">
+            <Th textAlign={"center"} px={2} py={3} textTransform="uppercase">
               Category
             </Th>
-            <Th px={2} py={3} textTransform="uppercase">
+            <Th textAlign={"center"} px={2} py={3} textTransform="uppercase">
               Sum
             </Th>
-            <Th px={2} py={3} textTransform="uppercase">
+            <Th textAlign={"center"} px={2} py={3} textTransform="uppercase">
               <Box as="span" className="sr-only">
                 Action
               </Box>
@@ -83,7 +88,11 @@ const TransactionList = ({ transactionType }) => {
               >
                 {new Date(transaction?.date).toLocaleDateString()}
               </Td>
-              <Td borderColor="gray.200" borderBottomWidth="2px">
+              <Td
+                textAlign={"center"}
+                borderColor="gray.200"
+                borderBottomWidth="2px"
+              >
                 {transaction?.description}
               </Td>
               <Td

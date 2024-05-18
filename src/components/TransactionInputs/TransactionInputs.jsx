@@ -49,6 +49,17 @@ const TransactionInputs = ({ transactionType }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { date, description, category, amount } = form;
+
+    // Validate if the selected date is in the future
+    const currentDate = new Date();
+    const selectedDate = new Date(date);
+    if (selectedDate > currentDate) {
+      // Handle the case where the selected date is in the future
+      // For example, you can display an error message or prevent form submission
+      console.log("Selected date cannot be in the future");
+      return;
+    }
+
     const formData = {
       date,
       description,
