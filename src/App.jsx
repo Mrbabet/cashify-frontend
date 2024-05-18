@@ -9,8 +9,6 @@ import Layout from "./components/Layout/Layout";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
 import React from "react";
-import Income from "./pages/Income";
-import Expense from "./pages/Expense";
 import AuthenticationPage from "./pages/AuthenticationPage/AuthenticationPage";
 import { useDispatch } from "react-redux";
 import { useAuth } from "./hooks/useAuth";
@@ -46,18 +44,7 @@ const App = () => {
                   />
                 }
               />
-              <Route
-                path="income"
-                element={
-                  <PrivateRoute component={<Income />} redirectTo="/welcome" />
-                }
-              />
-              <Route
-                path="expense"
-                element={
-                  <PrivateRoute component={<Expense />} redirectTo="/welcome" />
-                }
-              />
+
               <Route
                 path="reports"
                 element={

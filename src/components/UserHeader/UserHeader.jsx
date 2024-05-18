@@ -21,8 +21,6 @@ const UserHeader = () => {
 
   const { user, isLoggedIn } = useAuth();
 
-  console.log(user.email);
-
   const handleLogOut = async () => {
     try {
       dispatch(logoutUser());
