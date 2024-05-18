@@ -7,6 +7,7 @@ import {
 } from "./operations.js";
 
 const initialState = {
+  user: { email: null, balance: null, id: null },
   loading: false,
   isLoggedIn: false,
   isRefreshing: false,
@@ -14,9 +15,6 @@ const initialState = {
   error: null,
   accessToken: null,
   refreshToken: null,
-  id: null,
-  balance: null,
-  email: null,
 };
 const handlePending = (state) => {
   state.loading = true;
@@ -47,9 +45,7 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.accessToken = action.payload.accessToken;
         state.refreshToken = action.payload.refreshToken;
-        state.balance = action.payload.user.balance;
-        state.email = action.payload.user.email;
-        state.id = action.payload.user.id;
+        state.user = action.payload.user;
       })
       .addCase(logoutUser.fulfilled, () => initialState)
       .addCase(refreshUser.pending, (state, action) => {
@@ -58,6 +54,7 @@ const authSlice = createSlice({
       .addCase(refreshUser.fulfilled, (state, action) => {
         state.isLoggedIn = true;
         state.isRefreshing = false;
+        state.user = action.payload;
       })
       .addCase(refreshUser.rejected, (state) => {
         state.isRefreshing = false;

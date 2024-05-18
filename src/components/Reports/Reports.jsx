@@ -16,7 +16,6 @@ const Reports = () => {
       justifyContent={"center"}
       alignItems={"center"}
       gap={"8px"}
-      marginLeft={marginLeft}
       marginBottom={marginBottom}
     >
       Reports

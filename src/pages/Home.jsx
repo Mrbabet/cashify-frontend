@@ -30,10 +30,13 @@ const Home = () => {
 
   return (
     <>
-      <Box marginBlock={"32px"}>
-        <Flex flexDirection={flexDirection}>
+      <Box paddingInline={["20px", "32px"]}>
+        <Flex
+          pt={["20px", "32px"]}
+          justifyContent={["unset", "space-between"]}
+          flexDirection={flexDirection}
+        >
           {isMobile && <Flex>TO TRANSACTIONS</Flex>}
-
           <Reports />
           <Balance />
           {isMobile && (
