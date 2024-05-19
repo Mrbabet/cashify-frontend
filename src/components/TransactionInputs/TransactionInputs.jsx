@@ -50,12 +50,9 @@ const TransactionInputs = ({ transactionType }) => {
     e.preventDefault();
     const { date, description, category, amount } = form;
 
-    // Validate if the selected date is in the future
     const currentDate = new Date();
     const selectedDate = new Date(date);
     if (selectedDate > currentDate) {
-      // Handle the case where the selected date is in the future
-      // For example, you can display an error message or prevent form submission
       console.log("Selected date cannot be in the future");
       return;
     }
@@ -98,12 +95,20 @@ const TransactionInputs = ({ transactionType }) => {
       <Flex
         as="form"
         onSubmit={handleSubmit}
-        flexDirection={{ base: "column", md: "column" }}
+        justifyContent={"center"}
+        alignItems={"center"}
+        flexDirection={{
+          base: "column",
+          md: "column",
+          lg: "column",
+          xl: "row",
+        }}
         gap={3}
         p={4}
       >
         <Stack direction={{ base: "column", md: "row" }} spacing={3} flex="1">
           <Input
+            h="44px"
             name="date"
             value={form?.date}
             onChange={handleChange}
@@ -111,12 +116,14 @@ const TransactionInputs = ({ transactionType }) => {
             required
           />
           <Input
+            h="44px"
             name="description"
             placeholder="Product description"
             value={form?.description}
             onChange={handleChange}
           />
           <Select
+            h="44px"
             name="category"
             placeholder="Product category"
             value={form?.category}
@@ -129,6 +136,7 @@ const TransactionInputs = ({ transactionType }) => {
             ))}
           </Select>
           <Input
+            h="44px"
             name="amount"
             placeholder="0.00"
             value={form.amount}
@@ -137,29 +145,29 @@ const TransactionInputs = ({ transactionType }) => {
           />
         </Stack>
         <Stack
-          direction={{ base: "column", md: "row" }}
+          direction={{ base: "row", md: "row" }}
           spacing={3}
           align="center"
           justify="center"
         >
           <Button
-            w={{ base: "100%", md: "150px" }}
+            w={{ base: "130px", md: "150px" }}
             h="44px"
-            borderRadius="10px"
+            borderRadius={["20px", "20px", "10px"]}
             type="submit"
             variant="outline"
-            mt="32px"
+            m={0}
             _hover={{ bg: "#FF751D", color: "white" }}
           >
             Input
           </Button>
           <Button
-            w={{ base: "100%", md: "150px" }}
+            w={{ base: "130px", md: "150px" }}
             h="44px"
-            borderRadius="10px"
+            borderRadius={["20px", "20px", "10px"]}
             type="button"
             variant="outline"
-            mt="32px"
+            m={0}
             onClick={handleClear}
             _hover={{ bg: "#FF751D", color: "white" }}
           >

@@ -25,7 +25,7 @@ const Layout = () => {
             <Box
               bg={"#F5F6FB"}
               position={"absolute"}
-              w={"100vw"}
+              w={"100%"}
               h={["288px", "526px"]}
               borderRadius={"0 0 0px 120px"}
               zIndex={"-1"}
@@ -40,7 +40,7 @@ const Layout = () => {
             <Box
               bg={"#F5F6FB"}
               position={"absolute"}
-              w={"100vw"}
+              w={"100%"}
               h={["288px", "526px"]}
               borderRadius={"0 0 0px 120px"}
               zIndex={"-1"}

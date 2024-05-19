@@ -34,7 +34,7 @@ export const loginUser = createAsyncThunk(
 
       setAuthHeader(accessToken);
       document.cookie = `refreshToken=${refreshToken}; SameSite=Strict; Secure`;
-      console.log(res);
+
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

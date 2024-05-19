@@ -8,6 +8,7 @@ import {
   getIncomeCategories,
   getExpenseCategories,
   updateUserBalance,
+  getPeriodData,
 } from "./operations";
 import { refreshUser } from "../auth/operations";
 
@@ -19,12 +20,28 @@ const initialState = {
   expenseCategories: [],
   loading: false,
   error: null,
+  additionalData: {
+    incomes: {
+      incomeTotal: 0,
+      incomesData: {},
+    },
+    expenses: {
+      expenseTotal: 0,
+      expensesData: {},
+    },
+  },
+  activeCategory: null,
 };
 
 const transactionsSlice = createSlice({
   name: "transactions",
   initialState,
-  reducers: {},
+  reducers: {
+    setActiveCategory(state, action) {
+      // Define a new reducer to set the active category
+      state.activeCategory = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       // Add Income
@@ -35,6 +52,7 @@ const transactionsSlice = createSlice({
       .addCase(addIncome.fulfilled, (state, action) => {
         state.loading = false;
         state.balance = action.payload.balance;
+        state.additionalData = action.payload.additionalData;
         state.incomeStats = action.payload.category;
       })
       .addCase(addIncome.rejected, (state, action) => {
@@ -62,6 +80,7 @@ const transactionsSlice = createSlice({
       .addCase(addExpense.fulfilled, (state, action) => {
         state.loading = false;
         state.balance = action.payload.newBalance;
+        state.additionalData = action.payload.additionalData;
         if (!state.expenseStats.expenses) {
           state.expenseStats.expenses = [];
         }
@@ -133,7 +152,7 @@ const transactionsSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-      // Get User Balance
+      // Refresh User
       .addCase(refreshUser.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -163,7 +182,12 @@ const transactionsSlice = createSlice({
       .addCase(updateUserBalance.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+      })
+      .addCase(getPeriodData.fulfilled, (state, action) => {
+        // Update state with fetched data
+        state.periodData = action.payload;
       });
   },
 });
+export const { setActiveCategory } = transactionsSlice.actions;
 export default transactionsSlice.reducer;

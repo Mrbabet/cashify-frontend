@@ -6,7 +6,7 @@ export const addIncome = createAsyncThunk(
   async (incomeData, { rejectWithValue }) => {
     try {
       const response = await axios.post("/transaction/income", incomeData);
-      console.log(response.data);
+
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -19,7 +19,7 @@ export const getIncomeStats = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get("/transaction/income");
-      console.log(response.data.data);
+
       return response.data.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -32,7 +32,7 @@ export const addExpense = createAsyncThunk(
   async (expenseData, { rejectWithValue }) => {
     try {
       const response = await axios.post("/transaction/expense", expenseData);
-      console.log(response.data);
+
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -45,7 +45,6 @@ export const getExpenseStats = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get("/transaction/expense");
-      console.log(response.data.data);
       return response.data.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -89,17 +88,17 @@ export const getExpenseCategories = createAsyncThunk(
   }
 );
 
-// export const getPeriodData = createAsyncThunk(
-//   "transactions/getPeriodData",
-//   async (date, { rejectWithValue }) => {
-//     try {
-//       const response = await axios.get(`/transaction/period-data?date=${date}`);
-//       return response.data;
-//     } catch (error) {
-//       return rejectWithValue(error.response.data);
-//     }
-//   }
-// );
+export const getPeriodData = createAsyncThunk(
+  "transactions/getPeriodData",
+  async (date, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(`/transaction/period-data?date=${date}`);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
 
 export const updateUserBalance = createAsyncThunk(
   "users/updateBalance",
